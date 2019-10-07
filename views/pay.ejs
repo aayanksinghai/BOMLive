@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>BOML!ve</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery">
+  <meta name="author" content="Atharv Sharma">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/book.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <style>
+        td {
+            padding: 5px;
+        }
+        .razorpay-payment-button {
+            background:#1AAB8A;
+            color:#fff;
+            border:none;
+            position:relative;
+            height:60px;
+            font-size:1.6em;
+            padding:0 2em 0 2em;
+            cursor:pointer;
+            transition:800ms ease all;
+            outline:none;
+        }
+        .razorpay-payment-button:hover{
+        background:#fff;
+        color:#1AAB8A;
+        }
+    </style>
+</head>
+<body>
+
+<!-- notification for small viewports and landscape oriented smartphones -->
+<div class="device-notification">
+  <a class="device-notification--logo" href="/">
+    <img src="/images/logo.png" alt="Global">
+    <p>BOML!ve</p>
+  </a>
+  <p class="device-notification--message">BOML!ve has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+</div>
+
+<div class="perspective effect-rotate-left">
+  <div class="container">
+    <div id="viewport" class="l-viewport" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="/">
+            <img src="/images/logo.png" alt="BOML!ve" style="width: 100%;
+                  max-width: 150px;
+                  height: auto;
+                  border: 2px solid black;
+                  border-radius: 5px;">
+            <p>BOML!ve</p>
+          </a>
+        </header>
+
+        <ul class="l-main-content main-content">
+          <li class="l-section section section--is-active">
+            <div class="intro">
+              <h2>Proceed To Payment ... </h2>
+              <div class="intro--banner">
+                <table>
+                    <tr rowspan="3" colspan="2">
+                        <%= desc%><br><%= venue %><br><%= dnt %><br><br></tr>
+                        <tr>
+                            <td>
+                                Ticket Price :
+                            </td>
+                            <td>
+                              ₹ <%= price %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Quantity :
+                            </td>
+                            <td>
+                                <%= qty %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total price :
+                            </td>
+                            <td>
+                              ₹ <%= tot_price %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                GST (18%) :
+                            </td>
+                            <td>
+                              ₹ <%= sgst %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Amount :
+                            </td>
+                            <td>
+                              ₹ <%= amnt %>
+                            </td>
+                        </tr>
+                    </table>
+                    <br /><br />
+                  <form action="/success" method="POST">
+                      <script
+                          src="https://checkout.razorpay.com/v1/checkout.js"
+                          data-key="rzp_test_AI3xzqhZKVYu2l" 
+                          data-amount="<%= amnt %>" 
+                          data-currency="INR"
+                          data-order_id="<%= orderId %>"
+                          data-buttontext="Pay ₹<%= amnt %>"
+                          data-name="BOML!ve"
+                          data-description="<%= desc %>"
+                          data-image="//images/logo.png"
+                          data-theme.color="#F37254"
+                      ></script>
+                      <input type="hidden" custom="Hidden Element" name="hidden">
+                      </form>
+                </div>
+              </div>
+            </div>
+</div>
+</div>
+</div>
+
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+
+
+
+</body></html>
